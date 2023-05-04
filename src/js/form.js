@@ -176,7 +176,7 @@ form.addEventListener("submit", (e) => {
 
 
 
-
+/*//////////////////////////////*/
 const openRegModal = document.querySelector(".open-reg-modal");
 
 function showModal(selector) {
@@ -257,6 +257,218 @@ form.addEventListener('submit', (event) => {
 
 
 
+/*///////////////////*/
+// const table = document.querySelector('table');
+
+/*table.addEventListener('click', (event) => {
+  if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Delete') {
+    const row = event.target.closest('tr');
+    row.remove();
+  }
+  else if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Edit') {
+    // Handle edit button click here
+    console.log('Edit button clicked');
+  }
+});*/
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*//////////////////////*/
+function addNewUser(userObj) {
+  fetch("https://borjomi.loremipsum.ge/api/register", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userObj),
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+
+    if (data.status === 1) {
+      // If the server responds with a success message,
+      // update the table in the DOM and reset the form
+      getAllUsers();
+      form.reset();
+      closeBtn.click();
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+}
+/*//////////////////////*/
+
+
+
+/*//////////////////////*/
+/*const editBtn = document.querySelector("table button");
+const regFormModal = document.querySelector(".reg-form-modal");
+// const closeBtn = regFormModal.querySelector(".close-btn");
+const openModalBtn = document.querySelector(".open-reg-modal");
+const modalSelector = "#registration-modal";
+
+editBtn.addEventListener("click", function() {
+  openModalBtn.click();
+});
+
+closeBtn.addEventListener("click", function() {
+  regFormModal.style.display = "none";
+});
+
+function showModal(selector) {
+  const modal = document.querySelector(selector);
+  if (modal) {
+    const closeBtn = modal.querySelector(".close-btn");
+
+    modal.classList.add("active");
+    closeBtn.addEventListener("click", (e) => {
+      modal.classList.remove("active");
+    });
+    modal.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal")) {
+        modal.classList.remove("active");
+      }
+    });
+  }
+}
+
+if (openModalBtn) {
+  openModalBtn.addEventListener("click", () => {
+    showModal(modalSelector);
+  });
+}*/
+/*//////////////////////*/
+
+
+
+
+
+/*const table = document.querySelector("table");
+
+// open registration form modal
+const openModalBtn = document.querySelector(".open-reg-modal");
+const modal = document.getElementById("reg-form-modal");
+const closeModalBtn = document.querySelector(".close-btn");
+
+openModalBtn.addEventListener("click", () => {
+  modal.style.display = "block";
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// delete row
+const deleteBtns = document.querySelectorAll("table tbody tr button:last-of-type");
+
+deleteBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.parentNode.parentNode.remove();
+  });
+});
+
+// edit row
+const editBtns = document.querySelectorAll("table tbody tr button:first-of-type");
+
+editBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "block";
+
+    const currentRow = btn.parentNode.parentNode;
+    const inputs = modal.querySelectorAll("input[type='text'], input[type='number'], input[type='email'], input[type='radio']");
+    
+    inputs.forEach((input) => {
+      const inputName = input.getAttribute("name");
+      const cellValue = currentRow.querySelector(`td[data-name='${inputName}']`).textContent;
+      
+      input.value = cellValue;
+    });
+
+    const userIdInput = modal.querySelector("#user_id");
+    userIdInput.value = currentRow.querySelector("td:first-of-type").textContent;
+  });
+});
+
+// submit form
+const submitFormBtn = document.querySelector(".submit-form");
+const form = document.querySelector("#register-user");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const id = form.querySelector("#user_id").value;
+  const name = form.querySelector("#user_name").value;
+  const surname = form.querySelector("#user_surname").value;
+  const phone = form.querySelector("#user_phone").value;
+  const personalId = form.querySelector("#user_personal-id").value;
+  const email = form.querySelector("#user_email").value;
+  const zipCode = form.querySelector("#user_zip-code").value;
+  const gender = form.querySelector("input[type='radio']:checked").value;
+
+  const newRow = `
+    <tr>
+      <td style="text-align: center;">${id}</td>
+      <td data-name="name" style="text-align: center;">${name}</td>
+      <td data-name="surname" style="text-align: center;">${surname}</td>
+      <td data-name="email" style="text-align: center;">${email}</td>
+      <td data-name="personalId" style="text-align: center;">${personalId}</td>
+      <td data-name="phone" style="text-align: center;">${phone}</td>
+      <td data-name="zipCode" style="text-align: center;">${zipCode}</td>
+      <td data-name="gender" style="text-align: center;">${gender}</td>
+      <td style="border-right: 1.5px solid black ;"><button>Edit</button> <button>Delete</button></td>
+    </tr>
+  `;
+
+  if (id === "") {
+    table.querySelector("tbody").insertAdjacentHTML("beforeend", newRow);
+  } else {
+    const rowToUpdate = table.querySelector(`tbody tr td:first-of-type[data-id='${id}']`).parentNode;
+    rowToUpdate.outerHTML = newRow;
+  }
+
+  modal.style.display = "none";
+  form.reset();
+});*/
+
+/*//////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const editButton = document.querySelector('.edit');
+const openRegFormButton = document.querySelector('.open-reg-modal');
+
+editButton.addEventListener('click', () => {
+  openRegFormButton.click();
+});*/
+
+
+
+const mytable = document.querySelector('#my-table');
+
+table.addEventListener('click', (event) => {
+  const openModalBtn = document.querySelector('.open-reg-modal'); // define openModalBtn inside the event listener
+
+  if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Delete') {
+    const row = event.target.closest('tr');
+    row.remove();
+  } else if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Edit') {
+    console.log('Edit button clicked');
+    openModalBtn.click(); // trigger click event on openModalBtn
+  }
+});
 
 
 
@@ -273,6 +485,29 @@ form.addEventListener('submit', (event) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*///////////////////////*/
 const createUserUrl = "https://borjomi.loremipsum.ge/api/register", //method POST  ყველა ველი სავალდებულო
 	getAllUsersUrl = "https://borjomi.loremipsum.ge/api/all-users", //method GET
 	getSingleUserUrl = "https://borjomi.loremipsum.ge/api/get-user/1 ", //id, method  GET
